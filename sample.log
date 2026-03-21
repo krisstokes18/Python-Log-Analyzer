@@ -1,0 +1,4 @@
+2025-08-10 10:01:22Z INFO User jkim logged in from 10.0.0.1
+2025-08-10 10:05:03Z ERROR Permission denied for tsmith (10.0.0.2)
+2025-08-10 10:05:05Z WARN High CPU on host web01 (10.0.0.3)
+2025-08-10 10:05:07Z INFO User jkim logged out
