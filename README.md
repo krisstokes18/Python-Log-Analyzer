@@ -1,31 +1,47 @@
 # Python Log Analyzer
 
-Reads authentication logs and summarizes failed login patterns by user and IP. Helps a junior analyst spot brute-force indicators and noisy accounts in minutes.
+## Why I Built This
+Several job descriptions I was targeting — including roles at Snipes, 
+Five Below, and PaulHood — listed Python scripting, log analysis, and 
+automation as core responsibilities. I wanted to prove I could actually 
+do it, not just list it as a skill. This was my first real Python 
+project and I wanted to see how far I could take it.
 
-## Why It Matters
-Security teams deal with high volumes of log data daily. This tool automates the manual process of scanning logs for suspicious patterns, reducing triage time and surfacing actionable indicators quickly.
+## What It Does
+This tool reads authentication log files from the command line, filters 
+them by keyword, log level, or IP address, and surfaces the patterns 
+that matter — failed logins, permission errors, suspicious IPs — in 
+seconds instead of manually scanning through hundreds of lines. You can 
+run it against one file or several at once and optionally save the 
+output as a report.
 
-## How to Run
-1. Prerequisites: Python 3.x
-2. Clone the repo: `git clone https://github.com/krisstokes18/Python-Log-Analyzer.git`
-3. Navigate to folder: `cd Python-Log-Analyzer`
-4. Run: `python log_analyzer.py sample.log --ips --out reports/summary.txt`
-5. Expected output: summary report listing top IPs and flagged log lines
-
-## Screenshots
-See /docs for sample output screenshots.
+## How I Built It
+Built in Python using argparse for CLI flags, regex for level detection 
+and IP extraction, and Counter for tallying results. The hardest part 
+was getting the filters to work correctly — making sure a keyword or 
+level flag only passed through the right lines without creating false 
+positives, while still being flexible enough to handle different log 
+formats.
 
 ## What I Learned
-- Parsing log files using Python file I/O
-- Extracting and counting IPs using dictionaries and regex
-- Writing CLI tools with argument flags
-- Generating structured summary reports from raw log data
-- Connecting scripting skills to real SOC triage workflows
+- Scripting can be as simple or as complex as you want it to be. 
+  A basic log reader takes 20 lines. A flexible, production-style 
+  CLI tool with error handling, multiple filters, and file output 
+  takes considerably more thought.
+- Generators are one-pass in Python — I had to reconstruct the 
+  filter pipeline separately for IP counting, which forced me to 
+  actually understand what was happening under the hood.
+- The difference between writing code that works and writing code 
+  that handles edge cases gracefully is where the real learning happens.
 
-## Next Steps
-- Add CSV export for summary output
-- Build unit tests for edge cases including empty files and malformed lines
-- Add timestamp filtering to narrow analysis to a specific time window
+## Results
+See /docs for screenshots showing a basic run, keyword and level 
+filtering, IP extraction, and saved report output.
+
+## What I'd Add Next
+- CSV export for summary output
+- Timestamp filtering to narrow analysis to a specific time window
+- Unit tests for edge cases including empty files and malformed lines
 
 ## Links
 - LinkedIn: https://www.linkedin.com/in/kris-stokes-it/
